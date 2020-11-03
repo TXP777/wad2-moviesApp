@@ -55,6 +55,12 @@ const filterByGenre = (movieList, genreId) =>
               .should("have.text", matchingMovies[index].title);
             })
           })
+          it("should display movies with 'xyz' in the title", () => {
+            const searchString = "xyz";
+            const matchingMovies = filterByTitle(movies, searchString);
+            cy.get("input").clear().type(searchString);
+            cy.get(".card").should("have.length", 0);
+          })
         })
     })
   })
