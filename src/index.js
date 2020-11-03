@@ -1,3 +1,4 @@
+import UpcomingMoviesPage from './pages/upcomingMoviesPage' 
 import SiteHeader from './components/siteHeader'
 import MovieReviewPage from "./pages/movieReviewPage";
 import React from "react";
@@ -15,6 +16,7 @@ const App = () => {
         <SiteHeader />      
         <div className="container-fluid">
         <Switch>
+          <Route exact path="/movies/upcoming" component={UpcomingMoviesPage} />
           <Route path="/reviews/:id" component={MovieReviewPage} />
           <Route exact path="/movies/favorites" component={FavoriteMoviesPage} />
           <Route path="/movies/:id" component={MoviePage} />
