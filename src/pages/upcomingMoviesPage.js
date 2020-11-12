@@ -1,5 +1,5 @@
 import React, { useState, useEffect,useContext } from "react";
-import AddToFavoritesButton from '../components/buttons/addToFavorites'
+import AddToWatchListButton from '../components/buttons/addToWatchList'
 import {MoviesContext} from '../contexts/moviesContext'
 import { getUpcomingMovies } from "../api/tmdb-api";
 
@@ -21,7 +21,7 @@ const UpcomingMoviesPage = () => {
         title='Upcoming Movies'
         movies={movies}
         action={(movie) => {
-          return <AddToFavoritesButton movie={movie} /> 
+          return <AddToWatchListButton movie={movie} /> 
         }}
       />
   );
