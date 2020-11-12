@@ -1,5 +1,6 @@
 import React, { useEffect, createContext, useReducer } from "react";
 import { getMovies, getUpcomingMovies } from "../api/tmdb-api";
+import StubAPI from "../api/stubAPI";
 
 export const MoviesContext = createContext(null);
 
@@ -12,6 +13,14 @@ const reducer = (state, action) => {
         ),
         upcoming: [...state.upcoming],
       };
+    case "add-watchlist":
+      return {
+        upcoming: state.upcoming.map((m) =>
+          m.id === action.payload.movie.id ? { ...m, watchList: true } : m
+        ),
+        movies: [...state.movies],
+      };
+
     case "load":
       return { movies: action.payload.movies, upcoming: [...state.upcoming] };
     case "load-upcoming":
@@ -36,6 +45,10 @@ const MoviesContextProvider = (props) => {
   const addToFavorites = (movieId) => {
     const index = state.movies.map((m) => m.id).indexOf(movieId);
     dispatch({ type: "add-favorite", payload: { movie: state.movies[index] } });
+  };
+  const addToWatchList = (movieId) => {
+    const index = state.upcoming.map((m) => m.id).indexOf(movieId);
+    dispatch({ type: "add-watchlist", payload: { movie: state.upcoming[index] } });
   };
 
   const addReview = (movie, review) => {
@@ -62,7 +75,8 @@ const MoviesContextProvider = (props) => {
         movies: state.movies,
         upcoming: state.upcoming,
         addToFavorites: addToFavorites,
-        addReview: addReview,
+        addToWatchList: addToWatchList,
+        addReview: addReview
       }}
     >
       {props.children}

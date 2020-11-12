@@ -12,7 +12,7 @@ const MovieListPage = () => {
   return (
       <PageTemplate 
         title='No. Movies'
-        movies={context.movies}
+        movies={movies}
         action={(movie) => {
           return <AddToFavoritesButton movie={movie} /> 
         }}
