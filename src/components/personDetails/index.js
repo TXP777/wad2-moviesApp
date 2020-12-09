@@ -4,24 +4,27 @@ import "./personDetails.css";
 export default ({ person }) => {
   return (
     <>
-      <h4>Overview</h4>
-      <p>{person.overview}</p>
-      <ul className="list-group list-group-horizontal">
-        <li key="ruh" className="list-group-item list-group-item-dark">
-          Runtime (min.)
+     <h3>{person.name}</h3>
+     <br></br>
+     <h5>biography</h5>
+     {person.biography}
+   
+     <ul className="list-group list-group-horizontal">
+        <li key="gen" className="list-group-item list-group-item-drak">
+           Birthday
         </li>
-        <li key="rut" className="list-group-item ">
-          {person.runtime}
+        <li key="gen" className="list-group-item ">
+          {person.birthday}
         </li>
-        <li key="rdh" className="list-group-item list-group-item-dark">
-          Release Date
+        <li key="pob" className="list-group-item list-group-item-drak">
+          Place of Birth
         </li>
-        <li key="rdv" className="list-group-item ">
-          {person.release_date}
+        <li key="pob" className="list-group-item ">
+          {person.place_of_birth}
         </li>
       </ul>
-
-
+    
+ 
     </>
   );
 };

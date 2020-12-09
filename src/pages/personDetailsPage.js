@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import PersonDetails from "../components/personDetails";
 import PageTemplate from "../components/templatePersonPage";
 import usePerson from "../hooks/usePerson";
@@ -14,9 +14,26 @@ const PersonPage = props => {
         <PageTemplate person={person}>
           <PersonDetails person={person} />
         </PageTemplate>
-        : (
-      <p>Waiting for movie details</p>
-    )}
+        <div className="row">
+          <div className="col-12 ">
+            {!props.history.location.pathname.endsWith("/words") ? (
+              <Link
+                className="btn btn-primary btn-block active"
+                to={`/person/${id}/words`}
+              >
+                What you want to say to he/her ?
+              </Link>
+            ) : (
+              <Link
+                className="btn btn-primary btn-block active"
+                to={`/person/${id}`}
+              >
+                Hide the words
+              </Link>
+            )}
+          </div>
+        </div>
+   
   
       </>
     ) : (
