@@ -1,16 +1,21 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../globals/fontawesome";
+import { withRouter } from "react-router-dom";
 
-const PersonHeader = ({ person }) => {
+const PersonHeader = ({ person,history }) => {
   return (
     <div className="row">
+        <div className="col-2">
+          <button onClick={() => history.goBack()}>
+            <FontAwesomeIcon icon={["fas", "arrow-circle-left"]} size="2x" />
+            <span>{" Back"}</span>
+          </button>
+        </div>
       <div className="col-6 offset-3">
         <h2>
-          {person.title}
           {"  "}
-          <a href={person.popularpeoplepage}>
-            <FontAwesomeIcon icon={["fas", "home"]} size="1x" />
+          <a href={person.homepage}>
           </a>
         </h2>
       </div>
@@ -18,4 +23,4 @@ const PersonHeader = ({ person }) => {
   );
 };
 
-export default PersonHeader;
+export default withRouter(PersonHeader);
