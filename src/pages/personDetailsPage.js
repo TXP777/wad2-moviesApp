@@ -1,46 +1,25 @@
 import React from "react";
-import { Link, withRouter } from "react-router-dom";
+import {withRouter } from "react-router-dom";
 import PersonDetails from "../components/personDetails";
-import PageTemplate from "../components/templatePersonPage";
 import usePerson from "../hooks/usePerson";
+import useCredit from "../hooks/useCredit";
 
 const PersonPage = props => {
   const { id } = props.match.params;
   const [person] = usePerson(id)
+  const [credit] = useCredit(id)
   return (
     <>
     {person ? (
       <>
-        <PageTemplate person={person}>
-          <PersonDetails person={person} />
-        </PageTemplate>
-        <div className="row">
-          <div className="col-12 ">
-            {!props.history.location.pathname.endsWith("/words") ? (
-              <Link
-                className="btn btn-primary btn-block active"
-                to={`/person/${id}/words`}
-              >
-                What you want to say to he/her ?
-              </Link>
-            ) : (
-              <Link
-                className="btn btn-primary btn-block active"
-                to={`/person/${id}`}
-              >
-                Hide the words
-              </Link>
-            )}
-          </div>
-        </div>
-   
-  
+          <PersonDetails person={person} credit={credit}/>
       </>
     ) : (
       <p>Waiting for person details</p>
     )}
   </>
   );
-}
+};
 
-  export default withRouter(PersonPage);
+export default withRouter(PersonPage);
+      

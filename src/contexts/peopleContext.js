@@ -8,16 +8,7 @@ const reducer = (state, action) => {
   switch (action.type) {
     case "load":
       return { people: action.payload.people};
-    case "add-favorite":
-      return {
-        people: state.movies.map((p) =>
-          p.id === action.payload.people.id ? { ...p, favorite: true } : p
-        ),
-       
-      };
-    
-      
-
+  
     default:
       return state;
   }
@@ -26,10 +17,7 @@ const reducer = (state, action) => {
 const PeopleContextProvider = (props) => {
   const [state, dispatch] = useReducer(reducer, { people: [] });
 
-const addToFavorites = (personId) => {
-  const index = state.people.map((p) => p.id).indexOf(personId);
-  dispatch({ type: "add-favorite", payload: { person: state.people[index] } });
-};
+
 
 
 
@@ -45,7 +33,7 @@ const addToFavorites = (personId) => {
     <PeopleContext.Provider
       value={{
         people: state.people,
-        addToFavorites: addToFavorites,
+        
     
       }}
     >

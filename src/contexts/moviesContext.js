@@ -36,7 +36,7 @@ const reducer = (state, action) => {
     case "load-upcoming":
       return { upcoming: action.payload.movies, movies: [...state.movies] ,topRated : [...state.topRated]};
     case "load-topRated":
-      return { topRated: action.payload.movies, movies: [...state.topRated],upcoming :[...state.upcoming] };
+      return { topRated: action.payload.movies, movies: [...state.movies],upcoming :[...state.upcoming] };
     case "add-review":
       return {
         movies: state.movies.map((m) =>
