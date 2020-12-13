@@ -10,6 +10,8 @@ export default ({ person , credit}) => {
     <>
     <PersonHeader person={person} />
     <div class="leftbox">
+  
+
     <Link to={`/people/${person.id}`}>
         <img
           className="card-img-tag center "
@@ -32,9 +34,16 @@ export default ({ person , credit}) => {
 
         <h6>Place of Birth</h6>
         {person.place_of_birth}
-        <h6>Also Known As</h6>
-        {person.also_known_as}
         
+          <h6 class="list-group-item ">
+            Also Known As
+          </h6>
+          <p class="list-group-item">
+            {person.also_known_as}
+          </p>
+        
+     
+    
 
     </div>
      <div class="rightbox">
@@ -44,6 +53,7 @@ export default ({ person , credit}) => {
      <br></br>
      <h4>Known For</h4>
      <span ><SubMovieList  person={person} credit={credit}/></span>
+  
      </div>
      </> 
   );
