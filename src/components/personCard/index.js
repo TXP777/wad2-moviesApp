@@ -21,7 +21,7 @@ const PersonCard = ({person}) => {
         <div className="card-footer">
             <h4>{person.name}</h4> 
              {person.known_for.map(t =>(
-              <span>{t.title}</span>
+              <p>{t.title}</p>
             ))}
 
         </div>

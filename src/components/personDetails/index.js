@@ -9,7 +9,7 @@ export default ({ person , credit}) => {
   return (
     <>
     <PersonHeader person={person} />
-    <div class="leftbox">
+    <div className="leftbox">
   
 
     <Link to={`/people/${person.id}`}>
@@ -24,21 +24,21 @@ export default ({ person , credit}) => {
         />
         </Link>
       
-      <h5>Personal information</h5>
-        <h6>Known For</h6> 
-        <p>{person.known_for_department}</p>
+      <h6 id="d">Personal information</h6>
+        <h6 id="e">Known For</h6> 
+        <p id="f">{person.known_for_department}</p>
         
 
         <h6>Birthday</h6>
-        {person.birthday}
+        <p>{person.birthday}</p>
 
         <h6>Place of Birth</h6>
         {person.place_of_birth}
         
-          <h6 class="list-group-item ">
+          <h6 className="list-group-item ">
             Also Known As
           </h6>
-          <p class="list-group-item">
+          <p className="list-group-item">
             {person.also_known_as}
           </p>
         
@@ -46,13 +46,13 @@ export default ({ person , credit}) => {
     
 
     </div>
-     <div class="rightbox">
-     <h3>{person.name}</h3><br></br>
-     <h5>Biography</h5>
-        <span>{person.biography}</span>
+     <div className="rightbox">
+     <h3 id="a">{person.name}</h3><br></br>
+     <h5 id="b">Biography</h5>
+        <p id="c">{person.biography}</p>
      <br></br>
-     <h4>Known For</h4>
-     <span ><SubMovieList  person={person} credit={credit}/></span>
+     <h4 id="m">Known For</h4>
+     <p id="n"><SubMovieList  person={person} credit={credit}/></p>
   
      </div>
      </> 
