@@ -4,7 +4,7 @@ import AddToTopButton from '../components/buttons/addToTop'
 import {MoviesContext} from '../contexts/moviesContext'
 import PageTemplate from '../components/templateMovieListPage'
 
-const UpcomingMoviesPage = () => {
+const TopRatedMoviesPage = () => {
 
 
   const context = useContext(MoviesContext);
@@ -25,4 +25,4 @@ const UpcomingMoviesPage = () => {
   );
 };
 
-export default UpcomingMoviesPage;
+export default TopRatedMoviesPage;

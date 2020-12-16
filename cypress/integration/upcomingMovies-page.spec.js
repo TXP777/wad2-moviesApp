@@ -22,7 +22,8 @@ const filterByGenre = (movieList, genreId) =>
     })
 
     beforeEach(() => {
-      cy.visit("/movies/upcoming");
+      cy.visit("/");
+      cy.get("nav").find("li").eq(1).find("a").click();
     });
   
     describe("Base test", () => {

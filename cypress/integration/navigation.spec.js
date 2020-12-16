@@ -75,7 +75,8 @@ describe("Navigation", () => {
   
   describe("From the upcomingMovies page", () => {
     beforeEach(() => {
-      cy.visit("/movies/upcoming");
+      cy.visit("/");
+      cy.get("nav").find("li").eq(1).find("a").click();
     });
     it("should navigate to the movie details page and change browser URL", () => {
       cy.get(".card").eq(1).find("img").click();
@@ -123,7 +124,8 @@ describe("Navigation", () => {
   });
   describe("From the Watch List page", () => {
     beforeEach(() => {
-      cy.visit("/movies/upcoming");
+      cy.visit("/");
+      cy.get("nav").find("li").eq(1).find("a").click();
       cy.get(".card").eq(0).find("button").click();
       cy.get("nav").find("li").eq(5).find("a").click();
     });
@@ -155,7 +157,8 @@ describe("Navigation", () => {
 });
 describe("The upcomingMovies' Go Back button", () => {
   beforeEach(() => {
-    cy.visit("/movies/upcoming");
+    cy.visit("/");
+    cy.get("nav").find("li").eq(1).find("a").click();
   });
   it("should navigate from upcomingMovies page to movie details and back", () => {
     cy.get(".card").eq(1).find("img").click();
@@ -174,7 +177,8 @@ describe("The upcomingMovies' Go Back button", () => {
 });
 describe("The personDetails' Go Back button", () => {
   beforeEach(() => {
-    cy.visit("/people");
+    cy.visit("/");
+    cy.get("nav").find("li").eq(3).find("a").click();
   });
   it("should navigate from PopularPeople page to person details and back", () => {
     cy.get(".card").eq(1).find("img").click();
