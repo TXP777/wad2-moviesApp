@@ -20,11 +20,7 @@ const SiteHeader = () => {
       <span className="navbar-text text-light">
         For the movie enthusiast !!
       </span>
-      <FontAwesomeIcon
-        className="navbar-text text-light"
-        icon={["fas", "film"]}
-        size="3x"
-      />
+      
       <nav className="navbar navbar-expand ">
         <ul className="navbar-nav">
           <li className="nav-item">
