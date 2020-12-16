@@ -9,7 +9,7 @@ const WatchListMoviesPage = () => {
   return (
     <MovieListPageTemplate
       movies={watchList}
-      title={"Wtach List Movies"}
+      title={"Watch List Movies"}
       action={movie => <AddReviewButton movie={movie} />}
     />
   );
