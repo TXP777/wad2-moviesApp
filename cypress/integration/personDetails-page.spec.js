@@ -71,12 +71,12 @@ describe("Person Details Page", () => {
   it("should display the person's details", () => {
     cy.get("#a").contains(person.name);
     cy.get("#b").contains("Biography");
-    cy.get("#c").should('contain','Edward Thomas');
+    cy.get("#c").should('contain','Jackie Chan');
     cy.get("#d").contains("Personal information");
     cy.get("#e").contains("Known For");
     cy.get("#f").contains(person.known_for_department);
     cy.get("#m").contains("Known For");
-    cy.get(".card-title").eq(0).contains("Legend");
+    cy.get(".card-title").eq(0).contains("Thunderbolt");
     
     
     
