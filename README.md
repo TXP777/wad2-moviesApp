@@ -68,7 +68,7 @@ Name: Xianping Tao
 ![][reviewLink]
 >Clicking the 'Full Review' for a review extract will display the full text of the review.
 
-![][perosnLink]
+![][personLink]
 >Clicking the personCard causes the display of that person's details.
 
 ![][movieLink]
@@ -130,3 +130,5 @@ Cypress Dashboard URL: https://dashboard.cypress.io/organizations/3a8fb167-5dec-
 [reviewLink]: ./public/reviewLink.jpg
 [personLink]: ./public/personLink.jpg
 [movieLink]: ./public/movieLink.jpg
+[review]: ./public/review.png
+[movieDetail]: ./public/movieDetail.png
