@@ -1,22 +1,21 @@
-import AddMovieReviewPage from './pages/addMovieReviewPage'
 import GenresContextProvider from "./contexts/genresContext";
 import MoviesContextProvider from "./contexts/moviesContext";
-import UpcomingMoviesPage from './pages/upcomingMoviesPage' 
 import SiteHeader from './components/siteHeader'
-import MovieReviewPage from "./pages/movieReviewPage";
-import React from "react";
+import React, {lazy,Suspense } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Redirect, Switch} from "react-router-dom";
-import "../node_modules/bootstrap/dist/css/bootstrap.css";
-import HomePage from "./pages/homePage";
-import MoviePage from './pages/movieDetailsPage'
-import PersonPage from './pages/personDetailsPage'
-import FavoriteMoviesPage from './pages/favoritesMoviesPage' 
-import WatchListMoviesPage from './pages/watchListMoviesPage' 
+import "../node_modules/bootstrap/dist/css/bootstrap.css"; 
 import PeopleContextProvider from "./contexts/peopleContext";
-import PopularPeoplePage from "./pages/popularPeoplePage";
-import TopRatedMoviesPage from "./pages/topRatedMoviesPage";
-
+const AddMovieReviewPage = lazy(() => import("./pages/addMovieReviewPage"));
+const UpcomingMoviesPage = lazy(() => import("./pages/upcomingMoviesPage"));
+const MovieReviewPage = lazy(() => import("./pages/movieReviewPage"));
+const HomePage = lazy(() => import("./pages/homePage"));
+const MoviePage = lazy(() => import("./pages/movieDetailsPage"));
+const PersonPage = lazy(() => import("./pages/personDetailsPage"));
+const FavoriteMoviesPage = lazy(() => import("./pages/favoritesMoviesPage"));
+const WatchListMoviesPage = lazy(() => import("./pages/watchListMoviesPage"));
+const PopularPeoplePage = lazy(() => import("./pages/popularPeoplePage"));
+const TopRatedMoviesPage = lazy(() => import("./pages/topRatedMoviesPage"));
 const App = () => {
   return (
     <BrowserRouter>
@@ -26,6 +25,7 @@ const App = () => {
         <PeopleContextProvider>
         <MoviesContextProvider>  
         <GenresContextProvider>  
+        <Suspense fallback={<h1>Loading page....</h1>}>
         <Switch>
           <Route exact path="/reviews/form" component={AddMovieReviewPage} />
           <Route exact path="/movies/upcoming" component={UpcomingMoviesPage} />
@@ -39,6 +39,7 @@ const App = () => {
           <Route path="/" component={HomePage} />
           <Redirect from="*" to="/" />
         </Switch>
+        </Suspense>
         </GenresContextProvider>  
         </MoviesContextProvider>  
         </PeopleContextProvider>
