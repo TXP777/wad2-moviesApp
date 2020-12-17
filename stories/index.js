@@ -10,7 +10,14 @@ import MovieHeader from "../src/components/headerMovie";
 import AddFavoriteButton from "../src/components/buttons/addToFavorites";
 import { MemoryRouter } from "react-router";
 import GenresContextProvider from "../src/contexts/genresContext";
+import PersonCard from "../src/components/personCard";
 import { action } from "@storybook/addon-actions";
+import PeopleHeader from "../src/components/headerPersonList";
+import PersonList from "../src/components/personList";
+import PersonDetails from "../src/components/personDetails";
+import PersonHeader from "../src/components/headerPerson";
+import SubMovieCard from "../src/components/subMovieCard";
+import SubMovieList from "../src/components/subMovieList";
 
 const sample = {
   adult: false,
@@ -152,3 +159,80 @@ storiesOf("Movie Details Page/MovieHeader", module)
     <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
   ))
   .add("default", () => <MovieHeader movie={sample} />);
+
+
+
+storiesOf("PopularPeople Page/PersonCard", module)
+  .addDecorator(story => (
+    <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
+  ))
+  .add("default", () => (
+    <PersonCard
+      person={sample} 
+    />
+  ))
+  .add("exception", () => {
+    const sampleNoPoster = { ...sample, poster_path: undefined };
+    return (
+      <PersonCard
+        person={sampleNoPoster}
+      />
+    );
+  });
+  storiesOf("PopularPeople Page/PeopleHeader", module).add("default", () => (
+    <PeopleHeader title="Popular People" numPeople={10} />
+  ));
+  storiesOf("PopularPeople Page/PersonList", module)
+  .addDecorator(story => (
+    <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
+  ))
+  .add("default", () => {
+    const people = [sample, sample, sample, sample, sample];
+    return (
+      <PersonList
+        people={people}
+      />
+    );
+  });
+  storiesOf("Person Details Page/PersonDetails", module).add("default", () => (
+    <PersonDetails person={sample} credit={credit}/>
+  ));
+  storiesOf("Person Details Page/PersonHeader", module)
+  .addDecorator(story => (
+    <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
+  ))
+  .add("default", () => <PersonHeader person={sample} />);
+
+
+  storiesOf("PopularPeople Page/PersonDetails/SubMovieCard", module)
+  .addDecorator(story => (
+    <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
+  ))
+  .add("default", () => (
+    <SubMovieCard
+      person={sample}
+      
+    />
+  ))
+  .add("exception", () => {
+    const sampleNoPoster = { ...sample, poster_path: undefined };
+    return (
+      <SubMovieCard
+        person={sampleNoPoster}
+      />
+    );
+  });
+  
+  storiesOf("PopularPeople Page/PersonDetails/subMovieList", module)
+  .addDecorator(story => (
+    <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
+  ))
+  .add("default", () => {
+    const people = [sample, sample, sample, sample, sample];
+    return (
+      <SubMovieList
+        people={people}
+      />
+    );
+  });
+  
