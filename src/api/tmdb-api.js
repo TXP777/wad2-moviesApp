@@ -28,31 +28,63 @@ export const getMovies = () => {
       .then(res => res.json())
       .then(json => json.results);
   };
-  export const getUpcomingMovies = id => {
+  export const getUpcomingMovies = () => {
     return fetch(
-      `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_TMDB_KEY}`
-    )
-      .then(res => res.json())
-      .then(json => json.results);
+       '/api/upcoming',{headers: {
+         'Authorization': window.localStorage.getItem('token')
+      },
+      method:'get',
+    }
+    ).then(res => res.json());
   };
+  //export const getTopRatedMovies = id => {
+  //  return fetch(
+  //    `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_TMDB_KEY}`
+  //  )
+  //    .then(res => res.json())
+  //    .then(json => json.results);
+  //};
   export const getTopRatedMovies = id => {
     return fetch(
-      `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_TMDB_KEY}`
-    )
-      .then(res => res.json())
-      .then(json => json.results);
+      '/api/topRated',{headers:{
+        'Authorization': window.localStorage.getItem('token') 
+      },
+    method:'get',
+      }
+      ).then(res => res.json());
+      
   };
+  //export const getPeople = () => {
+  //  return fetch(
+  //    `https://api.themoviedb.org/3/person/popular?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&page=1`
+  //  )
+  //    .then(res => res.json())
+  //    .then(json => json.results);
+  //};
   export const getPeople = () => {
     return fetch(
-      `https://api.themoviedb.org/3/person/popular?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&page=1`
-    )
-      .then(res => res.json())
-      .then(json => json.results);
+      '/api/people',{headers:{
+        'Authorization': window.localStorage.getItem('token') 
+      },
+    method:'get',
+      }
+      ).then(res => res.json());
+      
   };
+  //export const getPerson = id => {
+  //  return fetch(
+  //    `https://api.themoviedb.org/3/person/${id}?api_key=${process.env.REACT_APP_TMDB_KEY}`
+  //  ).then(res => res.json());
+  //};
   export const getPerson = id => {
     return fetch(
-      `https://api.themoviedb.org/3/person/${id}?api_key=${process.env.REACT_APP_TMDB_KEY}`
-    ).then(res => res.json());
+      '/api/person',{headers:{
+        'Authorization': window.localStorage.getItem('token') 
+      },
+    method:'get',
+      }
+      ).then(res => res.json());
+      
   };
 
   export const getCredits = id => {
@@ -61,5 +93,6 @@ export const getMovies = () => {
     ).then(res => res.json());
    
   };
+  
   
   
